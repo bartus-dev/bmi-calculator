@@ -19,6 +19,8 @@ This project is a console-based BMI (Body Mass Index) calculator. It prompts the
 - ✅ **Input Validation** — Rejects weight or height values that are zero or negative, prompting the user to re-enter valid data.
 - 🛡️ **Error Handling** — Catches non-numeric input (e.g., letters or symbols) using a `try/except` block and returns a clear error message instead of crashing.
 - 🔁 **Retry Loop** — Keeps asking for input until a valid value is provided, improving the user experience.
+- 📂 **History Tracking** — Automatically saves your weight, height, BMI, and health classification along with a timestamp to a local `history.json` file.
+
 
 ## Technologies
 
@@ -67,7 +69,10 @@ The program will ask you to enter your weight and height:
 Type your weight (kg): 70
 
 Type your height (cm): 175
+
 Your bmi: 22.9
+
+[SUCCESS] Measurement saved to history.json!
 
 Classification: Normal
 ```
@@ -81,7 +86,6 @@ Classification: Normal
 ## Possible Future Improvements
 
 - Support for imperial units (lbs/inches)
-- Save BMI history to a file
 - Graphical user interface (GUI)
 - Unit tests for the calculation logic
 
