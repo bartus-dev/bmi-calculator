@@ -12,7 +12,20 @@ def save_history(weight, height, bmi, classification):
         "classification": classification
     }
 
-    print(f"Data ready to save: {new_measurment}")
+    file_name = "history.json"
+
+    try:
+        with open(file_name, "r") as file:
+            history_list = json.load(file)
+    except (FileNotFoundError, json.JSONDecodeError):
+        history_list = []
+
+    history_list.append(new_measurment)
+
+    with open(file_name, "w") as file:
+        json.dump(history_list, file, indent=4)
+
+    print("\n[SUCCESS] Measurement saved to history.json!")
     
 
 def calculate():
@@ -58,6 +71,6 @@ def calculate():
 
     save_history(user_weight, user_height * 100, bmi, result_class)
 
-    return f"Classification: {result_class}"
+    return f"\nClassification: {result_class}\n"
 
 print(calculate())
