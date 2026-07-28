@@ -1,3 +1,20 @@
+import json
+from datetime import datetime
+
+def save_history(weight, height, bmi, classification):
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    new_measurment = {
+        "date": current_time,
+        "weight": weight,
+        "height": height,
+        "bmi": round(bmi, 1),
+        "classification": classification
+    }
+
+    print(f"Data ready to save: {new_measurment}")
+    
+
 def calculate():
     print("---- BMI CALCULATOR ----")
     
@@ -27,16 +44,20 @@ def calculate():
     print(f"\nYour bmi: {bmi:.1f}")
 
     if bmi < 18.5:
-        return "Classification: Underweight\n"
+        result_class = "Underweight"
     elif bmi < 25.0:
-        return "Classification: Normal\n" 
+        result_class = "Normal" 
     elif bmi < 30.0:
-        return "Classification: Overweight\n"
+        result_class = "Overweight"
     elif bmi < 35.0:
-        return "Classification: Class I obese\n"
+        result_class = "Class I obese"
     elif bmi < 40.0:
-        return "Classification: Class II obese\n"
+        result_class = "Class II obese"
     else:
-        return "Classification: Class III obese\n"
-    
+        result_class = "Class III obese"
+
+    save_history(user_weight, user_height * 100, bmi, result_class)
+
+    return f"Classification: {result_class}"
+
 print(calculate())
