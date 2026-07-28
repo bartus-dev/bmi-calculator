@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+import os
 
 def save_history(weight, height, bmi, classification):
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -12,7 +13,9 @@ def save_history(weight, height, bmi, classification):
         "classification": classification
     }
 
-    file_name = "history.json"
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    file_name = os.path.join(script_dir, "history.json")
 
     try:
         with open(file_name, "r") as file:
